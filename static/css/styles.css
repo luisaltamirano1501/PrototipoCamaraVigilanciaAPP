@@ -1,0 +1,260 @@
+
+
+body { 
+    margin: 0;
+    padding: 0;
+    font-family: 'Hind', sans-serif;
+    color: azure;
+    background-color: rgb(5, 0, 19);
+    text-align: center;
+    place-items: center;
+
+}
+/*--------------------- bloque inicio de sesión ---------------------*/
+.main{
+    height: 400px;
+    width: 350px;
+    background-color:  rgb(148, 190, 209);
+    color: rgb(75, 75, 75);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    border-bottom: rgb(59, 59, 59);
+}
+
+.main h1{
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+
+.main form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .username{
+    position: relative;
+    border-bottom: 2px solid silver;
+    margin: 50px 0;
+}
+
+.username input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: black;
+    background: rgb(109, 156, 209);
+    border-radius: 20px;
+  
+}
+
+.username input:hover{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: rgb(20, 76, 141);
+    background: rgb(46, 58, 114);
+    color: aliceblue;
+    transition: 0.5s;
+  
+}
+
+.username label{
+    position: absolute;
+    top: 0%;
+    left: 5px;
+    color: rgb(0, 0, 0);
+    transform: translateY(-100%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+
+input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: rgb(14, 21, 82);
+    border-radius: 25px;
+    font-size: 18px;
+    color: aliceblue;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="submit"]:hover{
+    border-color: rgb(6, 68, 87);
+    background-color: rgb(2, 79, 151);
+    transition: 0.5s;
+}
+
+/*--------------------- barra de navegación ---------------------*/
+
+.header{
+    position: sticky;
+    top: 0;
+    background-color: rgb(0, 28, 46);
+    font-size: 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+    display: flex;
+}
+
+.header .logo img{
+    cursor: pointer;
+    height: 70px;
+    width: auto;
+    transition: 0.5s;
+    filter: invert(100%) sepia(0%) saturate(7494%) hue-rotate(356deg) brightness(99%) contrast(103%);
+}
+
+.header .logo img:hover{
+    transform: scale(1.2);
+    filter: invert(44%) sepia(86%) saturate(1764%) hue-rotate(162deg) brightness(95%) contrast(101%);
+}
+
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;    
+}
+
+.navbar{
+    text-decoration: none; /* quita el subrayado */
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.navbar .itemNav a{
+    text-decoration: none;
+    font-size: 15pt;
+    color: rgb(255, 255, 255);  
+    transition: 0.5s;
+}
+
+.navbar .itemNav a:hover {
+    color: rgb(77, 134, 219); 
+}
+
+.navbar .itemNav{
+    transition: 0.5s;
+}
+
+.navbar .itemNav:hover{
+    transform: scale(1.2);
+}
+
+
+/*--------------------- Pantalla General ---------------------*/
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-gap: 10px;
+}
+
+
+/* camara */
+.containerCamara{
+    width: 75vw;
+    max-width: 800px;
+    min-width: 150px;
+    margin: auto;
+}
+
+.containerCamara img{
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 3px 5px rgb(7, 11, 53);
+    transition: 0.5s;
+}
+.containerCamara img:hover{
+    box-shadow: 0px 3px 5px rgb(51, 5, 45);
+}
+
+/* tabla */
+.containerTable{
+    background-color: rgb(0, 28, 46);
+    width: 75vw;
+    border-collapse: collapse;
+    max-width: 800px;
+    min-width: 150px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+table{
+    width: 30vw;
+    background-color: rgb(22, 76, 109);
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+table:hover{
+    box-shadow: 0px 3px 5px rgb(3, 42, 114);
+
+}
+
+th,td{
+    padding: 10px;
+    transition: 0.2s;
+}
+
+thead{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    
+}
+
+tr:nth-child(even){
+    background-color: rgb(9, 83, 129);
+}
+
+tr:hover td{
+    background-color: rgb(15, 79, 197);
+}
+
+
+/* graficos */
+.grafico{
+    color: black;
+    background-color: rgb(129, 170, 204);
+    border-radius: 15px;
+    width: 50vw;
+    max-width: 550px;
+    min-width: 150px;
+    margin: auto;
+
+}
+
+.content{
+    width: 30%;
+    margin: 0 auto;
+}
+
+.canvas{
+    height: 400px;
+    width: 400px;
+    max-width: 100%;
+}
+
+
+.footer {
+    background-color: rgb(0, 28, 46);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

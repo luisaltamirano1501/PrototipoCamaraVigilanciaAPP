@@ -1,0 +1,36 @@
+{% extends "index.html" %} 
+
+{% block contenido %}
+<br>
+<div class="gallery">
+    <div class="containerTable">
+    <h4>Tabla registros</h4>
+    <table>
+    <thead>
+        <tr>
+            <th>fecha</th>
+            <th>hora</th>
+            <th>Cantidad de personas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registro in registros %}
+        <tr>
+            <td>{{ registro.fecha }}</td>
+            <td>{{ registro.hora }}</td>
+            <td>{{ registro.CantidadPersonas }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+    <div>
+        <div class="grafico">
+            <h4>Registro de personas circulando</h4>
+            <canvas id="myChartLinea"></canvas>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br>
+{% endblock %}

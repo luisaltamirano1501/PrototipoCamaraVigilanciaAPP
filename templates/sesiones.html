@@ -1,0 +1,38 @@
+{% extends "index.html" %} 
+
+{% block contenido %}
+<div class="gallery">
+    <div class="containerTable">
+        <h4>Tabla de sesiones</h4>
+        <table>
+        <thead>
+            <tr>
+                <th>email</th>
+                <th>cantidad de sesiones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sesion in sesiones %}
+            <tr>
+                <td>{{sesion.email}}</td>
+                <td>{{sesion.sesiones}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    
+
+    <div>
+        <div class="grafico">
+            <h4>Top mas conexiones</h4>
+            <canvas id="myChartBarras"></canvas>
+        </div>
+
+        <div class="grafico">
+            <h4>total de conexiones</h4>
+            <canvas id="myChartCircular"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock %}

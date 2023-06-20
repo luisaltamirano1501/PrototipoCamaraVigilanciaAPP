@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"  type = "text/css" href="../static/css/styles.css" > 
+    <title>PROYECTO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Roboto+Mono:wght@100&family=Space+Mono&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <div>
+      <div class="header">
+        <div class="logo">
+          <a href="/">
+            <img src="{{ url_for('static', filename='imagenes/logo.png') }}"alt="Logo">
+          </a>
+        </div>
+        <ul class = "navbar">
+        {% if "email" in session%}
+            <li class = "itemNav"><a href="/principal">principal</a></li>
+            <li class = "itemNav"><a href="/video">Video</a></li>
+            <li class = "itemNav"><a href="/grafica">Grafica</a></li>
+            <li class = "itemNav"><a href="/sesiones">Sesiones</a></li>
+        </ul>
+
+        <div class="logo">
+          <a href="/log-out">
+            <img src="{{ url_for('static', filename='imagenes/off.png') }}"alt="cierre">
+          </a>
+        </div>
+        {% endif %}
+        
+      </div>
+      {% block contenido %}
+      <div class = "main">
+        <h1>Inicio Sesión</h1>
+        <form class = "form" action="/" method="post">
+          <div class="username">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br><br>
+          </div>
+          <div class = "username">
+            <label for="password">Contraseña:</label>
+            <input type="password" name="password" required><br><br>
+          </div>
+            <input type="submit" value="Iniciar sesión">
+          </form>
+      </div>
+      
+
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      {% endblock %}
+    </div>
+    <br><br><br>
+    <footer class="footer">
+    
+    </footer>
+
+    <script>
+      var registros = JSON.parse('{{ registrosJSON|safe }}');
+      var sesiones = JSON.parse('{{ sesionesJSON|safe }}');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script type="text/javascript" src="../static/js/scripts.js"></script>  
+
+  </body>
+</html>

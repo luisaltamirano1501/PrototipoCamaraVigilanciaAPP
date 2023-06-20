@@ -1,0 +1,60 @@
+{% extends "index.html" %} 
+
+{% block contenido %}
+<h1>Pantalla General</h1>
+
+<div class="gallery">
+    <div>
+    
+        <div class="containerCamara">
+        <h2>camara</h2>
+        <img src="{{ url_for('video_feed') }} ">
+        </div>
+    </div>
+    <div>
+        <div class="containerTable">
+            <h4>Tabla de registros</h4>
+            <table>
+            <thead>
+                <tr>
+                    <th>fecha</th>
+                    <th>hora</th>
+                    <th>Cantidad de personas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registro in registros %}
+                <tr>
+                    <td>{{ registro.fecha }}</td>
+                    <td>{{ registro.hora }}</td>
+                    <td>{{ registro.CantidadPersonas }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+
+        
+        <div class="containerTable">
+            <h4>Tabla de sesiones</h4>
+            <table class = "table">
+            <thead>
+                <tr>
+                    <th>email</th>
+                    <th>cantidad de sesiones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sesion in sesiones %}
+                <tr>
+                    <td>{{sesion.email}}</td>
+                    <td>{{sesion.sesiones}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
