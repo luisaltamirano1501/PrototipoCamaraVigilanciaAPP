@@ -13,10 +13,18 @@ from pandas import ExcelWriter
 from bson import json_util
 
 #librerias para la funcion de la camara
+from ultralytics import YOLO
 import cv2
 import time
 import datetime
 import json
+
+import sys
+
+# Redirigir la salida estándar y de error a la nulidad
+#sys.stdout = open('nul', 'w')
+#sys.stderr = open('nul', 'w')
+
 
 
 
@@ -35,20 +43,26 @@ collection2 = db["cuentas"]
 
 # Inicializar el clasificador de cascada de Haar
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+# Load a model
+model = YOLO('yolov8n.pt')  # load an official model
 
-#función dectector de rostro  
-def detect_faces(frame):
-    # Convertir la imagen a escala de grises
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-    # Detectar los rostros en la imagen
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-
-    # Dibujar un rectángulo alrededor de cada rostro detectado
-    for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+#función dectector de personas
+def detect_objects(frame):
+    cantidadPersonas = 0
+    results = model(frame)
     
-    cantidadPersonas = len(faces)
+    for result in results:
+        classes = result.boxes.cls #clase(personas,autos,animales,etc..)
+        boxes = result.boxes.xyxy  #boxer(coordenadas de los contornos)
+
+    n = 0   
+    for box in boxes:
+        if classes[n] == 0: #se filtran solo personas
+            cv2.rectangle(frame, (int(box[0]), int(box[1])), (int(box[2]),int(box[3])), (0, 255, 0), 1)
+            cantidadPersonas = cantidadPersonas + 1
+        n = n + 1
+
+    #cantidadPersonas = len(results)
     fecha = datetime.date.today()
     hora = datetime.datetime.now().strftime("%H:%M:%S")
     
@@ -64,7 +78,7 @@ def generate_video():
         ret, frame = cap.read()
 
         # Detectar los rostros en el frame
-        frame,cantidadPersonas,fecha,hora = detect_faces(frame)
+        frame,cantidadPersonas,fecha,hora = detect_objects(frame)
 
         # Codificar el frame como JPEG
         ret, buffer = cv2.imencode('.jpg', frame)
